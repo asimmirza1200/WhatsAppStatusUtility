@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WhatsAppStatusUtility</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <array name="menuOptions">
+        <item>Home</item>
+        <item>History</item>
+        <item>Favourite</item>
+        <item>Share App</item>
+        <item>More Apps</item>
+        <item>About</item>
+
+    </array>
+</resources>
