@@ -1,4 +1,4 @@
-package com.digicomsolutions.whatsappstatusutility;
+package com.wadownloader.whatsappstatussaver;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,7 +14,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.digicomsolutions.whatsappstatusutility.Fargments.HomeFragment;
+import com.wadownloader.whatsappstatussaver.Fargments.HomeFragment;
 import com.tompee.funtablayout.BubbleTabAdapter;
 import com.tompee.funtablayout.FunTabLayout;
 import com.tompee.funtablayout.SimpleTabAdapter;
@@ -90,10 +90,10 @@ import java.util.Arrays;
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
             if (addToBackStack) {
-                transaction.addToBackStack(null);
+                transaction.addToBackStack("sdfsdf");
             }
 
-            transaction.add(R.id.container, fragment).commit();
+            transaction.replace(R.id.container, fragment).commit();
         }
 
         @Override
@@ -106,8 +106,9 @@ import java.util.Arrays;
 
             // Navigate to the right fragment
             switch (position) {
-                default:
-                    goToFragment(new HomeFragment(), false);
+                case 0:
+
+                    goToFragment(new HomeFragment(), true);
                     break;
             }
 

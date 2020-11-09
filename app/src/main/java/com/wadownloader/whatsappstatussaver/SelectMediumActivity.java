@@ -1,4 +1,4 @@
-package com.digicomsolutions.whatsappstatusutility;
+package com.wadownloader.whatsappstatussaver;
 
 import androidx.appcompat.app.AppCompatActivity;
 

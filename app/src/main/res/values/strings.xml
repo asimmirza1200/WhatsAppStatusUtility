@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WhatsAppStatusUtility</string>
+    <string name="app_name">WhatsApp Status Saver</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <array name="menuOptions">
@@ -11,4 +11,7 @@
         <item>About</item>
 
     </array>
+    <string name="save_successful_message">Saved To Gallery!</string>
+    <string name="save_error_message">Could not save,Try again later</string>
+    <color name="video_thumbnail_placeholder_color">#cccccc</color>
 </resources>

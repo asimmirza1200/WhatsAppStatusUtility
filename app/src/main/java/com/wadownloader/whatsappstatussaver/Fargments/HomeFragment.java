@@ -1,18 +1,29 @@
-package com.digicomsolutions.whatsappstatusutility.Fargments;
+package com.wadownloader.whatsappstatussaver.Fargments;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+import android.widget.VideoView;
 
-import com.digicomsolutions.whatsappstatusutility.R;
-import com.digicomsolutions.whatsappstatusutility.SampleFragment;
+import com.wadownloader.whatsappstatussaver.R;
 import com.tompee.funtablayout.BubbleTabAdapter;
 import com.tompee.funtablayout.FunTabLayout;
 
@@ -48,14 +59,23 @@ public class HomeFragment extends Fragment implements BubbleTabAdapter.IconFetch
                 setIconDimension(50).
                 setTabTextAppearance(R.style.BubbleTabText);
         tabLayout.setUpWithAdapter(builder.build());
+            viewPager.setOffscreenPageLimit(1);
         return view;
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        viewPager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
+        viewPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return SampleFragment.newInstance(position);
+                switch (position){
+                    case 0:
+                        return ImagesFragment.newInstance(position);
+                    case 1:
+                        return new VideoRecyclerViewFragment();
+                    default:
+                        return new Fragment();
+
+                }
             }
 
             @Override
@@ -68,10 +88,10 @@ public class HomeFragment extends Fragment implements BubbleTabAdapter.IconFetch
                 String title = "";
                 switch (position) {
                     case 0:
-                        title = "Videos";
+                        title = "Images";
                         break;
                     case 1:
-                        title = "Images";
+                        title = "Videos";
                         break;
 
                 }
@@ -94,10 +114,10 @@ public class HomeFragment extends Fragment implements BubbleTabAdapter.IconFetch
         int resource = R.mipmap.ic_launcher;
         switch (position) {
             case 0:
-                resource = R.drawable.video;
+                resource = R.drawable.photo;
                 break;
             case 1:
-                resource = R.drawable.photo;
+                resource = R.drawable.video;
                 break;
 
         }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:airbnb="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="2.5dp"
+    android:layout_marginBottom="2.5dp"
+    style="@style/card_style">
+
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:background="@color/black"
+                android:layout_above="@id/share"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.volokh.danylo.video_player_manager.ui.VideoPlayerView
+                android:id="@+id/player"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/cover"
+                app:lottie_autoPlay="true"
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                airbnb:lottie_fileName="loading.json"
+                airbnb:lottie_fallbackRes="@drawable/ic_error"
+                airbnb:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                airbnb:lottie_loop="false"/>
+
+            <ImageView
+                android:id="@+id/fav"
+                android:layout_width="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:layout_height="50dp"
+                android:background="@drawable/roundedbox"
+                android:scaleType="centerCrop"
+                android:src="@drawable/fav_un" />
+            <ImageView
+                android:id="@+id/share"
+                android:layout_width="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedbox"
+                android:padding="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_height="50dp"
+                app:tint="@color/colorPrimaryDark"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_share_24" />
+            <Button
+                android:id="@+id/save"
+                android:layout_width="50dp"
+                android:layout_margin="10dp"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:text="Save"
+                android:drawableTint="@color/colorAccent"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/roundedboxcolor"
+                android:layout_toRightOf="@id/share"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                app:tint="@color/colorPrimaryDark"
+                android:scaleType="centerCrop"
+                android:drawableLeft="@drawable/ic_baseline_save_alt_24" />
+        </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

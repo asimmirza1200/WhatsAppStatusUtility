@@ -1,2 +1,3 @@
+include ':video-player-manager'
 include ':app'
 rootProject.name = "WhatsAppStatusUtility"
