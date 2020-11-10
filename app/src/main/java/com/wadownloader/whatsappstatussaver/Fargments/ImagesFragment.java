@@ -30,6 +30,9 @@ public class ImagesFragment extends Fragment {
     GridLayoutManager gridLayoutManager;
     ImagesAdapter simpleAdapter;
     private RecyclerView recyclerView;
+    String type;
+    private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/WhatsApp Statuses/";
+    private static String DIRECTORY_PATH="";
 
     public static ImagesFragment newInstance(int number) {
         ImagesFragment fragment = new ImagesFragment();
@@ -45,7 +48,15 @@ public class ImagesFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sample, container, false);
          recyclerView = (RecyclerView)view. findViewById(R.id.recycler_view);
-
+         type=getArguments().getString("type","");
+         if (type.equals("Home"))
+         {
+             DIRECTORY_PATH=WHATSAPP_STATUSES_LOCATION;
+         }
+         else
+         {
+             DIRECTORY_PATH=DIRECTORY_TO_SAVE_MEDIA_NOW;
+         }
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
             askForPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 
@@ -64,7 +75,7 @@ public class ImagesFragment extends Fragment {
             ActivityCompat.requestPermissions(getActivity(), permission, requestCode);
         }else {
             recyclerView.getItemAnimator().setChangeDuration(700);
-            simpleAdapter = new ImagesAdapter(this.getListFiles(new File(Environment.getExternalStorageDirectory().toString()+WHATSAPP_STATUSES_LOCATION)), getActivity());
+            simpleAdapter = new ImagesAdapter(this.getListFiles(new File(Environment.getExternalStorageDirectory().toString()+DIRECTORY_PATH)), getActivity(),type);
             recyclerView.setAdapter(simpleAdapter);
             gridLayoutManager = new GridLayoutManager(getContext(), 1);
             recyclerView.setLayoutManager(gridLayoutManager);
@@ -77,7 +88,7 @@ public class ImagesFragment extends Fragment {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     //permission with request code 1 granted
                     recyclerView.getItemAnimator().setChangeDuration(700);
-                    simpleAdapter = new ImagesAdapter(this.getListFiles(new File(Environment.getExternalStorageDirectory().toString()+WHATSAPP_STATUSES_LOCATION)), getActivity());
+                    simpleAdapter = new ImagesAdapter(this.getListFiles(new File(Environment.getExternalStorageDirectory().toString()+DIRECTORY_PATH)), getActivity(),type);
                     recyclerView.setAdapter(simpleAdapter);
                     gridLayoutManager = new GridLayoutManager(getContext(), 1);
                     recyclerView.setLayoutManager(gridLayoutManager);

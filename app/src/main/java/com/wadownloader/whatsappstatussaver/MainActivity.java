@@ -3,21 +3,26 @@ package com.wadownloader.whatsappstatussaver;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+
 import nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout;
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
 
-import android.graphics.Color;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.wadownloader.whatsappstatussaver.Fargments.AboutUsFragment;
+import com.wadownloader.whatsappstatussaver.Fargments.HistoryFragment;
 import com.wadownloader.whatsappstatussaver.Fargments.HomeFragment;
-import com.tompee.funtablayout.BubbleTabAdapter;
-import com.tompee.funtablayout.FunTabLayout;
-import com.tompee.funtablayout.SimpleTabAdapter;
+import com.wadownloader.whatsappstatussaver.models.Admob;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,12 +32,17 @@ import java.util.Arrays;
         private MenuAdapter mMenuAdapter;
         private ViewHolder mViewHolder;
 
+
         private ArrayList<String> mTitles = new ArrayList<>();
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+            // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+
+
+
             mTitles = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.menuOptions)));
 
             // Initialize the views
@@ -78,7 +88,7 @@ import java.util.Arrays;
 
         @Override
         public void onFooterClicked() {
-            Toast.makeText(this, "onFooterClicked", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
         @Override
@@ -110,6 +120,33 @@ import java.util.Arrays;
 
                     goToFragment(new HomeFragment(), true);
                     break;
+                case 1:
+
+                    goToFragment(new HistoryFragment(), true);
+                    break;
+
+                case 2:
+                    Intent sendIntent = new Intent();
+                    sendIntent.setAction(Intent.ACTION_SEND);
+                    sendIntent.putExtra(Intent.EXTRA_TEXT,
+                            "Hey check out my app at: https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
+                    sendIntent.setType("text/plain");
+                    startActivity(sendIntent);
+                    break;
+                case 3:
+
+                    final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://dev?id=7945477530981096882")));
+                    } catch (android.content.ActivityNotFoundException anfe) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=7945477530981096882")));
+                    }
+                    break;
+                case 4:
+
+                    goToFragment(new AboutUsFragment(), true);
+                    break;
+
             }
 
             // Close the drawer

@@ -36,6 +36,9 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class VideoRecyclerViewFragment extends Fragment {
     private static final String WHATSAPP_STATUSES_LOCATION = "/WhatsApp/Media/.Statuses";
+    private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/WhatsApp Statuses/";
+    private static String DIRECTORY_PATH="";
+    String type;
 
     private static final boolean SHOW_LOGS = Config.SHOW_LOGS;
     private static final String TAG = VideoRecyclerViewFragment.class.getSimpleName();
@@ -74,8 +77,16 @@ public class VideoRecyclerViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-            this.getListFiles(new File(Environment.getExternalStorageDirectory().toString()+WHATSAPP_STATUSES_LOCATION));
+        type=getArguments().getString("type","");
+        if (type.equals("Home"))
+        {
+            DIRECTORY_PATH=WHATSAPP_STATUSES_LOCATION;
+        }
+        else
+        {
+            DIRECTORY_PATH=DIRECTORY_TO_SAVE_MEDIA_NOW;
+        }
+            this.getListFiles(new File(Environment.getExternalStorageDirectory().toString()+DIRECTORY_PATH));
 
 
         View rootView = inflater.inflate(R.layout.fragment_video_recycler_view, container, false);
@@ -89,9 +100,10 @@ public class VideoRecyclerViewFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        VideoRecyclerViewAdapter videoRecyclerViewAdapter = new VideoRecyclerViewAdapter(mVideoPlayerManager, getActivity(), mList);
+        VideoRecyclerViewAdapter videoRecyclerViewAdapter = new VideoRecyclerViewAdapter(mVideoPlayerManager, getActivity(), mList,type);
 
         mRecyclerView.setAdapter(videoRecyclerViewAdapter);
+
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override

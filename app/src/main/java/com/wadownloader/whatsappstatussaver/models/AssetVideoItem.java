@@ -9,6 +9,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 
+import com.volokh.danylo.video_player_manager.meta.CurrentItemMetaData;
+import com.wadownloader.whatsappstatussaver.InterstitialAdActivity;
 import com.wadownloader.whatsappstatussaver.R;
 import com.squareup.picasso.Picasso;
 import com.volokh.danylo.video_player_manager.Config;
@@ -50,6 +52,31 @@ public class AssetVideoItem extends BaseVideoItem{
         if(SHOW_LOGS) Logger.v(TAG, "update, position " + position);
 
         viewHolder.mCover.setVisibility(View.VISIBLE);
+        if (position==0)
+        {
+            deactivate(viewHolder.itemView,position);
+
+        }
+        viewHolder.paly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (viewHolder.mCover.getVisibility()==View.VISIBLE)
+                {
+                    viewHolder.mCover.setVisibility(View.INVISIBLE);
+                    Log.d("jsjf","active");
+                    viewHolder.paly.setImageResource(R.drawable.pause);
+                    setActive(viewHolder.itemView,position);
+                }
+                else
+                {
+                    viewHolder.mCover.setVisibility(View.VISIBLE);
+                    Log.d("jsjf","deactive");
+                    viewHolder.paly.setImageResource(R.drawable.play);
+                    deactivate(viewHolder.itemView,position);
+                }
+
+            }
+        });
         mImageLoader.load(mImageResource).into(viewHolder.mCover);
         viewHolder.share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +90,8 @@ public class AssetVideoItem extends BaseVideoItem{
         });
         viewHolder.download.setOnClickListener(this.downloadMediaItem(new File(mAssetFileDescriptor),context));
 
+
+
     }
 
 
@@ -72,6 +101,7 @@ public class AssetVideoItem extends BaseVideoItem{
 
             @Override
             public void onClick(View v) {
+
                 new Runnable(){
 
                     @Override
@@ -83,6 +113,8 @@ public class AssetVideoItem extends BaseVideoItem{
                                     setText(R.string.save_successful_message).
                                     success().
                                     show();
+                            InterstitialAdActivity interstitialAdActivity=new InterstitialAdActivity();
+                            context.startActivity(new Intent(context,InterstitialAdActivity.class));
                         } catch (Exception e) {
                             e.printStackTrace();
                             Log.e("RecyclerV", "onClick: Error:"+e.getMessage() );

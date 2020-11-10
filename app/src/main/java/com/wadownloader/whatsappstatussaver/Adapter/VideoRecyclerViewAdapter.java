@@ -23,23 +23,30 @@ public class VideoRecyclerViewAdapter extends RecyclerView.Adapter<VideoViewHold
     private final VideoPlayerManager mVideoPlayerManager;
     private final List<BaseVideoItem> mList;
     private final Context mContext;
+    private final String mtype;
 
-    public VideoRecyclerViewAdapter(VideoPlayerManager videoPlayerManager, Context context, List<BaseVideoItem> list){
+
+    public VideoRecyclerViewAdapter(VideoPlayerManager videoPlayerManager, Context context, List<BaseVideoItem> list,String type){
         mVideoPlayerManager = videoPlayerManager;
         mContext = context;
         mList = list;
+        mtype=type;
     }
 
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
         BaseVideoItem videoItem = mList.get(position);
-        View resultView = videoItem.createView(viewGroup, mContext.getResources().getDisplayMetrics().widthPixels);
+        View resultView = videoItem.createView(viewGroup, mContext.getResources().getDisplayMetrics().widthPixels,position);
         return new VideoViewHolder(resultView);
     }
 
     @Override
     public void onBindViewHolder(VideoViewHolder viewHolder, int position) {
         BaseVideoItem videoItem = mList.get(position);
+        if (mtype.equals("History"))
+        {
+            viewHolder.download.setVisibility(View.GONE);
+        }
         videoItem.update(position, viewHolder, mVideoPlayerManager,mContext);
 
     }

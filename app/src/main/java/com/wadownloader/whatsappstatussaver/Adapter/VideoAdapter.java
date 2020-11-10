@@ -40,7 +40,7 @@ import de.mateware.snacky.Snacky;
  * Created by Ace Programmer Rbk<rodney@swiftpot.com> on 06-May-17
  * 8:24 AM
  */
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.FileHolder> {
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.FileHolder>    {
 
 	private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/WhatsApp Statuses/";
 	private ArrayList<File> filesList;
@@ -81,8 +81,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.FileHolder> 
 //	}
 	@Override
 	public VideoAdapter.FileHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View inflatedView = LayoutInflater.from(parent.getContext())
-				.inflate(R.layout.item_video, parent, false);
+		View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_video, parent, false);
 		return new FileHolder(inflatedView);
 	}
 
@@ -118,9 +117,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.FileHolder> 
 			}
 		});
 
-		   initiatePopupWithPicasso(currentFile.getAbsolutePath(),holder);
-			Bitmap myBitmap = BitmapFactory.decodeFile(currentFile.getAbsolutePath());
-			holder.videoViewVideoMedia.setSource(currentFile.getAbsolutePath());
+		initiatePopupWithPicasso(currentFile.getAbsolutePath(),holder);
+		Bitmap myBitmap = BitmapFactory.decodeFile(currentFile.getAbsolutePath());
+		holder.videoViewVideoMedia.setSource(currentFile.getAbsolutePath());
 //			holder.videoViewVideoMedia.start();
 //		}
 
@@ -135,6 +134,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.FileHolder> 
 		holder.videoViewVideoMedia.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+
 			}
 		});
 

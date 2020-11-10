@@ -1,37 +1,25 @@
 package com.wadownloader.whatsappstatussaver.Fargments;
 
-import android.Manifest;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-import android.widget.VideoView;
 
-import com.wadownloader.whatsappstatussaver.R;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.tompee.funtablayout.BubbleTabAdapter;
 import com.tompee.funtablayout.FunTabLayout;
+import com.wadownloader.whatsappstatussaver.R;
+import com.wadownloader.whatsappstatussaver.models.VideoViewHolder;
 
 
-public class HomeFragment extends Fragment implements BubbleTabAdapter.IconFetcher  {
+public class HistoryFragment extends Fragment implements BubbleTabAdapter.IconFetcher  {
 
 
-    public HomeFragment() {
+    public HistoryFragment() {
         // Required empty public constructor
     }
 
@@ -70,13 +58,13 @@ public class HomeFragment extends Fragment implements BubbleTabAdapter.IconFetch
                 switch (position){
                     case 0:
                         Bundle c = new Bundle();
-                        c.putString("type","Home");
+                        c.putString("type","History");
                         ImagesFragment imagesFragment=new ImagesFragment();
                         imagesFragment.setArguments(c);
                         return imagesFragment;
                     case 1:
                         Bundle b = new Bundle();
-                        b.putString("type","Home");
+                        b.putString("type","History");
                         VideoRecyclerViewFragment videoRecyclerViewFragment=new VideoRecyclerViewFragment();
                         videoRecyclerViewFragment.setArguments(b);
                         return videoRecyclerViewFragment;

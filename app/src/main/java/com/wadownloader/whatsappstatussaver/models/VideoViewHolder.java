@@ -2,6 +2,7 @@ package com.wadownloader.whatsappstatussaver.models;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class VideoViewHolder extends RecyclerView.ViewHolder{
-
     public final VideoPlayerView mPlayer;
     public final LottieAnimationView mCover;
     public final ImageView share;
     public final Button download;
+    public final ImageButton paly;
 
     public VideoViewHolder(View view) {
         super(view);
@@ -25,6 +26,7 @@ public class VideoViewHolder extends RecyclerView.ViewHolder{
         mCover = (LottieAnimationView) view.findViewById(R.id.cover);
         share = (ImageView) view.findViewById(R.id.share);
         download = (Button) view.findViewById(R.id.save);
+        paly=(ImageButton) view.findViewById(R.id.play);
 
     }
 }

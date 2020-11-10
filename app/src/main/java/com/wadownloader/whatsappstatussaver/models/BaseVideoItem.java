@@ -2,9 +2,11 @@ package com.wadownloader.whatsappstatussaver.models;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.wadownloader.whatsappstatussaver.R;
 import com.volokh.danylo.video_player_manager.manager.VideoItem;
@@ -49,7 +51,9 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
     @Override
     public void setActive(View newActiveView, int newActiveViewPosition) {
         VideoViewHolder viewHolder = (VideoViewHolder) newActiveView.getTag();
+
         playNewVideo( new CurrentItemMetaData(newActiveViewPosition, newActiveView), viewHolder.mPlayer, mVideoPlayerManager);
+
     }
 
     /**
@@ -60,13 +64,14 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
         stopPlayback(mVideoPlayerManager);
     }
 
-    public View createView(ViewGroup parent, int screenWidth) {
+    public View createView(ViewGroup parent, int screenWidth,int postion) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_item, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = screenWidth;
 
         final VideoViewHolder videoViewHolder = new VideoViewHolder(view);
         view.setTag(videoViewHolder);
+
 
         videoViewHolder.mPlayer.addMediaPlayerListener(new MediaPlayerWrapper.MainThreadMediaPlayerListener() {
             @Override
@@ -75,6 +80,8 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
 
             @Override
             public void onVideoPreparedMainThread() {
+                videoViewHolder.paly.setImageResource(R.drawable.pause);
+
                 // When video is prepared it's about to start playback. So we hide the cover
                 videoViewHolder.mCover.setVisibility(View.INVISIBLE);
             }
@@ -94,6 +101,8 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
             @Override
             public void onVideoStoppedMainThread() {
                 // Show the cover when video stopped
+                videoViewHolder.paly.setImageResource(R.drawable.play);
+
                 videoViewHolder.mCover.setVisibility(View.VISIBLE);
             }
         });

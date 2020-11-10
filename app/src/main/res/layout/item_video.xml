@@ -22,13 +22,18 @@
             app:andexo_resize_mode="Fit"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-             />
+
+             >
+
+        </com.potyvideo.library.AndExoPlayerView>
+
         <ImageView
             android:id="@+id/fav"
             android:layout_width="50dp"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
             android:padding="10dp"
+            android:visibility="gone"
             android:layout_height="50dp"
             android:background="@drawable/roundedbox"
             android:scaleType="centerCrop"

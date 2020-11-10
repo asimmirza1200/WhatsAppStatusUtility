@@ -42,10 +42,12 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.FileHolder
 	private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/WhatsApp Statuses/";
 	private ArrayList<File> filesList;
 	private Activity activity;
+	private String mtype;
 
-	public ImagesAdapter(ArrayList<File> filesList, Activity activity) {
+	public ImagesAdapter(ArrayList<File> filesList, Activity activity,String type) {
 		this.filesList = filesList;
 		this.activity = activity;
+		this.mtype=type;
 		//setHasStableIds(true);
 	}
 
@@ -59,6 +61,10 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.FileHolder
 	@Override
 	public void onBindViewHolder(final ImagesAdapter.FileHolder holder, int position) {
 		final File currentFile = filesList.get(position);
+		if (mtype.equals("History"))
+		{
+			holder.buttonImageDownload.setVisibility(View.GONE);
+		}
 
 		holder.buttonImageDownload.setOnClickListener(this.downloadMediaItem(currentFile));
 		//holder.buttonVideoDownload.setOnClickListener(this.downloadMediaItem(currentFile));
