@@ -22,7 +22,6 @@ public class InterstitialAdActivity extends AppCompatActivity {
         //   --- Admob ---
         view=getWindow().getDecorView().getRootView();
 
-        Admob.createLoadBanner(getApplicationContext(), view);
         Admob.createLoadInterstitial(getApplicationContext(),null);
         //   --- *** ---
         finish();

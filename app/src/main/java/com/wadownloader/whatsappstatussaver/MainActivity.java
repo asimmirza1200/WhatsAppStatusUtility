@@ -2,16 +2,23 @@ package com.wadownloader.whatsappstatussaver;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout;
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
 
+import android.Manifest;
+import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,11 +26,14 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.wadownloader.whatsappstatussaver.Adapter.ImagesAdapter;
 import com.wadownloader.whatsappstatussaver.Fargments.AboutUsFragment;
 import com.wadownloader.whatsappstatussaver.Fargments.HistoryFragment;
 import com.wadownloader.whatsappstatussaver.Fargments.HomeFragment;
+import com.wadownloader.whatsappstatussaver.Fargments.ImagesFragment;
 import com.wadownloader.whatsappstatussaver.models.Admob;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -41,8 +51,6 @@ import java.util.Arrays;
             setContentView(R.layout.activity_main);
             // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
 
-
-
             mTitles = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.menuOptions)));
 
             // Initialize the views
@@ -58,10 +66,34 @@ import java.util.Arrays;
             handleDrawer();
 
             // Show main fragment in container
-            goToFragment(new HomeFragment(), false);
+          //  goToFragment(new HomeFragment(), false);
+            askForPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+
             mMenuAdapter.setViewSelected(0, true);
             setTitle(mTitles.get(0));
         }
+        private void askForPermission(String[] permission, int requestCode) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this, permission[0])
+                    != PackageManager.PERMISSION_GRANTED) {
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permission[0])) {
+//                Toast.makeText(getContext(), "Please grant the requested permission to get your task done!", Toast.LENGTH_LONG).show();
+//            }
+                ActivityCompat.requestPermissions(MainActivity.this, permission, requestCode);
+            }else {
+               goToFragment(new HomeFragment(),false);
+            }
+        }
+        @Override
+        public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+            switch (requestCode) {
+                case 1:
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        goToFragment(new HomeFragment(),false);
+                    }
+            }
+        }
+
 
         private void handleToolbar() {
             setSupportActionBar(mViewHolder.mToolbar);

@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,9 +70,9 @@ public class ImagesFragment extends Fragment {
     private void askForPermission(String[] permission, int requestCode) {
         if (ContextCompat.checkSelfPermission(getContext(), permission[0])
                 != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permission[0])) {
-                Toast.makeText(getContext(), "Please grant the requested permission to get your task done!", Toast.LENGTH_LONG).show();
-            }
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permission[0])) {
+//                Toast.makeText(getContext(), "Please grant the requested permission to get your task done!", Toast.LENGTH_LONG).show();
+//            }
             ActivityCompat.requestPermissions(getActivity(), permission, requestCode);
         }else {
             recyclerView.getItemAnimator().setChangeDuration(700);
@@ -83,6 +84,7 @@ public class ImagesFragment extends Fragment {
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        Toast.makeText(getContext(), requestCode, Toast.LENGTH_SHORT).show();
         switch (requestCode) {
             case 1:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -122,5 +124,6 @@ public class ImagesFragment extends Fragment {
 
         return inFiles;
     }
+
 
 }
