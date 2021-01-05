@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">WhatsApp Status Saver</string>
+
+    <string
+        name="banner_id">1013674319138195_1013676852471275</string>
+    <string name="interstitial_id">1013674319138195_1013677702471190</string>
+    <string name="native_id">1013674319138195_1013675655804728</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <array name="menuOptions">
+        <item>Home</item>
+        <item>History</item>
+        <item>Share App</item>
+        <item>More Apps</item>
+        <item>About</item>
+
+    </array>
+    <string name="save_successful_message">Saved To Gallery!</string>
+    <string name="save_error_message">Could not save,Try again later</string>
+    <color name="video_thumbnail_placeholder_color">#cccccc</color>
+    <string name="longdes">
+
+            WhatsApp status saver application let you download WA videos, images, gifs and Whatsapp status and also allow you to share whatsapp media with a fantastic status downloader.
+            Status saver app not only allow you to save WhatsApp status but also enables you to save your friend story from Instagram and Facebook. Story saver helps you easily save videos and photos. Save story directly into your device and repost saved videos and photos on your Instagram and Facebook.
+            The Only App in the Store which shows you Status from  Different Apps/Environments!
+            They include:
+            	All status downloader
+            	Save your friend story
+            	Whatsapp downloader
+            	G.B Statuses
+            	Business Statuses
+            	story saver
+            How to Use WhatsApp Saver app? 
+            	open WhatsApp status and just see one time a status you want to download
+            	open status saver and select video or image
+            	click on the download button to save whatsapp status
+            	view Download status, videos and images
+            	share with friends 
+            Key features of WA status saver app
+            	Easy to use
+            	Clean and simple view
+            	Support multi save and delete
+            	Support WA status, WA business, GB status
+            	Play save videos offline in default player
+            	View status and story videos offline
+            	Very small in size
+            Status downloader application is best for saving whatsapp status. Now download all status and all stories with all in one status saver and story saver application. Easily download Facebook status, and download whatsapp status, images and videos easily.
+            
+            
+
+
+</string>
+    <string name="descilimer">
+         WhatsApp status saver or Story saver app is not associated with WhatsApp. We respect intellectual property rights that’s why we don’t encourage any re-uploading of video or image without owner’s permission.
+            WhatsApp Status saver app just access user gallery images and videos with user permission. Any re-uploading of content like images or videos and violation of intellectual property right is sole responsibility of user.
+            For any further inquiry and any type of intellectual property right issues feel free to contact us
+    </string>
+</resources>

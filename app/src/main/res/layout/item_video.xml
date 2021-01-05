@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="4dp"
+    app:cardPreventCornerOverlap="false"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        >
+
+        <com.potyvideo.library.AndExoPlayerView
+            android:id="@+id/video"
+            app:andexo_resize_mode="Fit"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+
+            >
+
+        </com.potyvideo.library.AndExoPlayerView>
+
+        <ImageView
+            android:id="@+id/fav"
+            android:layout_width="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_height="50dp"
+            android:background="@drawable/roundedbox"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fav_un" />
+        <ImageView
+            android:id="@+id/share"
+            android:layout_width="50dp"
+            android:layout_below="@id/video"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:layout_height="50dp"
+            app:tint="@color/colorPrimaryDark"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_share_24" />
+        <Button
+            android:id="@+id/save"
+            android:layout_width="50dp"
+            android:layout_below="@id/video"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="Save"
+            android:drawableTint="@color/colorAccent"
+            android:textColor="@color/colorAccent"
+            android:background="@drawable/roundedboxcolor"
+            android:layout_toRightOf="@id/share"
+            android:layout_height="50dp"
+            app:tint="@color/colorPrimaryDark"
+            android:scaleType="centerCrop"
+            android:drawableLeft="@drawable/ic_baseline_save_alt_24" />
+        <LinearLayout
+            android:id="@+id/banner_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

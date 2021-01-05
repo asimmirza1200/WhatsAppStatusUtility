@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.wadownloader.whatsappstatussaver"
+        minSdkVersion 17
+        targetSdkVersion 30
+        versionCode 6
+        versionName "1.4"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+//    alis: whatappstatussever,
+//    password:whatappstatussever
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.wang.avi:library:2.1.3'
+    implementation 'com.tompee:funtablayout:1.1.0'
+    implementation 'nl.psdcompany:duo-navigation-drawer:3.0.0'
+    implementation 'com.github.matecode:Snacky:1.1.5'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.2'
+    implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:1.0.16'
+    implementation 'com.github.danylovolokh:list-visibility-utils:0.2.0'
+    implementation project(':video-player-manager')
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.airbnb.android:lottie:3.5.0'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.facebook.android:audience-network-sdk:6.2.0'
+    implementation 'com.facebook.android:facebook-android-sdk:6.2.0'
+
+    //Firebase Crash Analytics Library
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+    //downloadbar
+    implementation 'com.pitt.fresh.library:freshdownloadview:1.0'
+}

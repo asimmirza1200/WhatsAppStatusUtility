@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "543926904723",
+    "project_id": "offline-status-saver",
+    "storage_bucket": "offline-status-saver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543926904723:android:fb58589c05e0f04b6baa66",
+        "android_client_info": {
+          "package_name": "com.wadownloader.whatsappstatussaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543926904723-mu7ugamfo96ofap0nd6dbj0u90p1tdg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv9uVui7KpaM1i_Kqe3Nl2qlutVGMxeyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543926904723-mu7ugamfo96ofap0nd6dbj0u90p1tdg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
